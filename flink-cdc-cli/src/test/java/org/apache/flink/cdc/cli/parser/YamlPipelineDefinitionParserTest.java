@@ -30,6 +30,7 @@ import org.junit.jupiter.api.Test;
 
 import java.net.URL;
 import java.nio.file.Paths;
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -84,6 +85,10 @@ class YamlPipelineDefinitionParserTest {
         URL resource = Resources.getResource("definitions/pipeline-definition-minimized.yaml");
         YamlPipelineDefinitionParser parser = new YamlPipelineDefinitionParser();
         PipelineDef pipelineDef = parser.parse(Paths.get(resource.toURI()), new Configuration());
+        String s = pipelineDef.getConfig().get(PIPELINE_LOCAL_TIME_ZONE);
+        ZoneId zoneId = ZoneId.systemDefault();
+        System.out.println(zoneId);
+        System.out.println(s);
         assertThat(pipelineDef.getConfig().get(PIPELINE_LOCAL_TIME_ZONE))
                 .isNotEqualTo(PIPELINE_LOCAL_TIME_ZONE.defaultValue());
     }
