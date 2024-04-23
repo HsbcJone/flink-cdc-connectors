@@ -17,6 +17,7 @@
 
 package org.apache.flink.cdc.cli;
 
+import org.apache.commons.cli.CommandLine;
 import org.apache.flink.cdc.composer.PipelineComposer;
 import org.apache.flink.cdc.composer.PipelineExecution;
 import org.apache.flink.cdc.composer.definition.PipelineDef;
@@ -114,6 +115,8 @@ class CliFrontendTest {
     private CliExecutor createExecutor(String... args) throws Exception {
         Options cliOptions = CliFrontendOptions.initializeOptions();
         CommandLineParser parser = new DefaultParser();
+        CommandLine parse = parser.parse(cliOptions, args);
+        System.out.println(parse);
         return CliFrontend.createExecutor(parser.parse(cliOptions, args));
     }
 
@@ -141,11 +144,31 @@ class CliFrontendTest {
                     + "       --jar <arg>             JARs to be submitted together with the pipeline\n"
                     + "       --use-mini-cluster      Use Flink MiniCluster to run the pipeline\n";
 
+    /**
+     * pipe
+     */
     private static class NoOpComposer implements PipelineComposer {
 
         @Override
         public PipelineExecution compose(PipelineDef pipelineDef) {
-            return () -> new PipelineExecution.ExecutionInfo("fake-id", "fake-description");
+            //return () -> new PipelineExecution.ExecutionInfo("fake-id", "fake-description");
+            PipelineExecutionDemo pipelineExecutionDemo = new PipelineExecutionDemo();
+            return pipelineExecutionDemo;
+        }
+    }
+
+    /***
+     * PipelineExecution => 实现具体execute执行
+     */
+    public static class PipelineExecutionDemo implements PipelineExecution{
+
+        public PipelineExecutionDemo() {
+        }
+
+        @Override
+        public ExecutionInfo execute() throws Exception {
+            ExecutionInfo executionInfo = new ExecutionInfo("fake-id", "fake-description");
+            return   executionInfo;
         }
     }
 }
