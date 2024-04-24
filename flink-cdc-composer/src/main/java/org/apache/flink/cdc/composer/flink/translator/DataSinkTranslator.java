@@ -42,6 +42,13 @@ public class DataSinkTranslator {
     private static final String SINK_WRITER_PREFIX = "Sink Writer: ";
     private static final String SINK_COMMITTER_PREFIX = "Sink Committer: ";
 
+    /**
+     * 这里是=>将DataStream绑定Sink
+     * @param sinkDef
+     * @param input
+     * @param dataSink
+     * @param schemaOperatorID
+     */
     public void translate(
             SinkDef sinkDef,
             DataStream<Event> input,

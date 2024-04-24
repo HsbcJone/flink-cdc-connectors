@@ -23,7 +23,8 @@ import org.apache.flink.cdc.composer.definition.PipelineDef;
 public interface PipelineComposer {
 
     /**
-     * Composing pipeline execution from the specified pipeline definition.
+     *
+     *
      *
      * @param pipelineDef definition of the pipeline
      */

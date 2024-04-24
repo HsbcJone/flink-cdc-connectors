@@ -38,6 +38,11 @@ public class FlinkPipelineExecution implements PipelineExecution {
         this.isBlocking = isBlocking;
     }
 
+    /**
+     * 执行流任务核心方法入口
+     * @return
+     * @throws Exception
+     */
     @Override
     public ExecutionInfo execute() throws Exception {
         JobClient jobClient = env.executeAsync(jobName);

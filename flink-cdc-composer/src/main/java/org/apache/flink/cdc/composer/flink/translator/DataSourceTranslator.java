@@ -42,6 +42,13 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 @Internal
 public class DataSourceTranslator {
 
+    /**
+     * composer是将Yaml转化为Flink的DataStream
+     * @param sourceDef
+     * @param env
+     * @param pipelineConfig
+     * @return
+     */
     public DataStreamSource<Event> translate(
             SourceDef sourceDef, StreamExecutionEnvironment env, Configuration pipelineConfig) {
         // Search the data source factory

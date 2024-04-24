@@ -49,11 +49,16 @@ import static org.apache.flink.cdc.common.pipeline.PipelineOptions.PIPELINE_LOCA
  * file. A definition will be translated to a {@link PipelineExecution} by {@link PipelineComposer}
  * before being submitted to the computing engine.
  */
+
+/***
+ * PipelineDef 是管道定义类.来源于原始传入的yaml文件
+ */
 public class PipelineDef {
     private final SourceDef source;
     private final SinkDef sink;
     private final List<RouteDef> routes;
     private final List<TransformDef> transforms;
+    //全局参数
     private final Configuration config;
 
     public PipelineDef(
