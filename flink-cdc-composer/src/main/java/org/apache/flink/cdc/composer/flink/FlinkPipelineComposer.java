@@ -90,6 +90,11 @@ public class FlinkPipelineComposer implements PipelineComposer {
         this.isBlocking = isBlocking;
     }
 
+    /**
+     * 攻克Compose
+     * @param pipelineDef definition of the pipeline
+     * @return
+     */
     @Override
     public PipelineExecution compose(PipelineDef pipelineDef) {
         int parallelism = pipelineDef.getConfig().get(PipelineOptions.PIPELINE_PARALLELISM);

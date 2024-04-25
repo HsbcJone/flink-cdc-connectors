@@ -41,6 +41,10 @@ public class MySqlDataSource implements DataSource {
         this.sourceConfig = configFactory.createConfig(0);
     }
 
+    /**
+     * 这里构建EventSourceProvider即可
+     * @return
+     */
     @Override
     public EventSourceProvider getEventSourceProvider() {
         MySqlEventDeserializer deserializer =
